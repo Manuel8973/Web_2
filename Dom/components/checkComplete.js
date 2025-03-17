@@ -8,10 +8,10 @@ const checkComplete = () =>{
 // funcion para crear el check
 // <i class="fa-solid fa-square-check"></i>
 const color = (evento) => {
-    const element = evento.target
-    element.classList.add('fas');
-    element.classList.add('completeIcon');
-    element.classList.remove('far');
+    const element = evento.target;
+    element.classList.toggle('fas');
+    element.classList.toggle('completeIcon');
+    element.classList.toggle('far');
 };
 
-export default checkComplete;   
+export default checkComplete;
