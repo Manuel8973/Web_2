@@ -1,6 +1,6 @@
-// DOM funciona a traves de los data sets
-// encapsular el codigo (todo se vuelve funcion flecha modular) llamas como funcion y no como script
-(()=>{
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
+
 const btn = document.querySelector('[data-form-btn]');
 
 console.log(btn);
@@ -22,15 +22,6 @@ const createTask = (evento) =>{
     // dentro una card
     task.classList.add('card');
     input.value = '';
-    /* const contenido = 
-    `
-    <div>
-        <i class="far fa-check-square icon"></i>
-        <span class="task">${value}</span>
-    </div>
-    <i class="fas fa-trash-alt trashIcon icon"></i>
-    `; */
-    // Otra manera
     // creando una variable para que creemos el elemento div
     const contenidoTask = document.createElement('div');
     contenidoTask.appendChild(checkComplete());
@@ -40,30 +31,12 @@ const createTask = (evento) =>{
     // aumentamos en el texto el valor
     tituloTask.innerText = value;
     contenidoTask.appendChild(tituloTask);
-    const content = `<i class="fas fa-trash-alt trashIcon icon"></i>`;
 
     // task.innerHTML = contenido;
     task.appendChild(contenidoTask);
+    task.appendChild(deleteIcon());
     list.appendChild(task);
-    console.log(contenido);
 };
 
 // Cuando yo haga click va a llamar a la funcion que yo he generado
 btn.addEventListener('click', createTask);
-
-const checkComplete = () =>{
-    const i = document.createElement('i'); // creacion de un icono
-    i.classList.add("far", "fa-check-square", "icon"); // estoy dando estilos al icono
-    i.addEventListener("click", color);
-    return i;
-};
-
-// funcion para crear el check
-// <i class="fa-solid fa-square-check"></i>
-const color = (evento) => {
-    const element = evento.target
-    element.classList.add('fas');
-    element.classList.add('completeIcon');
-    element.classList.remove('far');
-};
-})();
